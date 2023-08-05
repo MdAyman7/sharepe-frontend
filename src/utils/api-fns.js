@@ -16,7 +16,7 @@ export const postFetch = async (
   const resp = (
     await fetch(url, {
       method: "POST",
-      body: params,
+      body: JSON.stringify(params),
       headers: headersRequired ? headers : undefined,
       credentials: "include",
       cache: "no-store",

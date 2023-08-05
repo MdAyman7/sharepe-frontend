@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header";
 import { Button, Tabs } from "antd";
 import Content from "./Content";
@@ -52,7 +52,7 @@ const Home = () => {
         <Button
           type="primary"
           size="large"
-          className="w-full !h-14 font-medium !text-lg "
+          className="w-full !h-12 font-medium !text-lg "
           onClick={() => {
             navigate("/create");
           }}

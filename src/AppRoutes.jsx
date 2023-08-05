@@ -1,19 +1,47 @@
 import { ConfigProvider } from "antd";
 
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateContract from "./pages/Contract";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Layout from "./components/Layout";
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <Layout>
+          <Home />
+        </Layout>
+      ),
     },
     {
       path: "/create",
-      element: <CreateContract />,
+      element: (
+        <Layout>
+          <CreateContract />
+        </Layout>
+      ),
+    },
+
+    {
+      path: "/login",
+      element: (
+        <Layout>
+          <Login />
+        </Layout>
+      ),
+    },
+    {
+      path: "/signup",
+      element: (
+        <Layout>
+          <Signup />
+        </Layout>
+      ),
     },
   ]);
 
