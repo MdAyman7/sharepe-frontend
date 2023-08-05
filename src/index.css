@@ -1,0 +1,41 @@
+/* @tailwind base; */
+@tailwind utilities;
+/* @tailwind components; */
+
+body {
+  margin: 0;
+  font-family: "Sen", sans-serif;
+}
+
+.ant-tabs-nav {
+  width: 100% !important;
+}
+
+.ant-tabs-tab {
+  display: block; /* centers text inside tabs */
+  flex: 1;
+  text-align: center;
+}
+
+.ant-tabs-nav > div:nth-of-type(1) {
+  display: unset !important;
+  width: 100% !important;
+}
+
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.ant-tabs .ant-tabs-tab-btn {
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.ant-tabs-ink-bar {
+  position: absolute;
+  background: white !important;
+  pointer-events: none;
+}
