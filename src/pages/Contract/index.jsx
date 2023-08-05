@@ -10,6 +10,7 @@ const CreateContract = () => {
         <img
           src={leftArrowIcon}
           alt="left-arrow"
+          className="cursor-pointer"
           onClick={() => {
             navigate(-1);
           }}

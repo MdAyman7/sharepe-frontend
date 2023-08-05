@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Button, ConfigProvider, DatePicker } from "antd";
+import { ConfigProvider } from "antd";
 
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -27,8 +26,8 @@ function App() {
         },
       }}
     >
-      <div className="bg-gray-800 h-screen">
-        <div className="container max-w-screen-sm mx-auto h-screen bg-gray-100">
+      <div className="bg-gray-800 min-h-screen">
+        <div className="container max-w-screen-sm mx-auto min-h-screen bg-gray-100">
           <RouterProvider router={router} />
         </div>
       </div>

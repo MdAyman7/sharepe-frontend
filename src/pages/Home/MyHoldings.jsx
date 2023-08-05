@@ -1,22 +1,35 @@
-const Card = ({ title, value }) => {
-  return (
-    <div className="bg-white shadow-md rounded-md p-4">
-      <div className="text-sm text-gray-400">{title}</div>
-      <div className="text-2xl font-semibold">{value}</div>
-    </div>
-  );
-};
+import HoldingsCard from "./HoldingsCard";
 
 const MyHoldings = () => {
+  const data = [
+    {
+      title: "Namma Funds - 1",
+      totalAmount: 100000,
+      yourInvestment: 100,
+      durationDays: 90,
+      remainingPoolAmount: 10000,
+    },
+    {
+      title: "Namma Funds - 2",
+      totalAmount: 1000000,
+      yourInvestment: 5000,
+      durationDays: 30,
+      remainingPoolAmount: 10000,
+    },
+    {
+      title: "Namma Funds - 3",
+      totalAmount: 1000,
+      yourInvestment: 200,
+      durationDays: 180,
+      remainingPoolAmount: 100,
+    },
+  ];
   return (
     <div className="h-full px-4">
-      <h1 className="text-2xl">My Holdings</h1>
-
-      <div className="grid gap-4 mt-4">
-        <Card title="Total Value" value="$0.00" />
-        <Card title="Total Value" value="$0.00" />
-        <Card title="Total Value" value="$0.00" />
-        <Card title="Total Value" value="$0.00" />
+      <div className="grid gap-8 mt-4 mb-24">
+        {data.map((ele) => {
+          return <HoldingsCard data={ele} key={ele.title} />;
+        })}
       </div>
     </div>
   );
