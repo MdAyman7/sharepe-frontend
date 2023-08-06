@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       console.log(success, msg, "data");
       if (!success) {
         if (pathname === "/signup") {
-          navigate("/signup");
+          //njkfwe
         } else if (pathname !== "/login") {
           navigate("/login");
         }

@@ -8,10 +8,6 @@ const Signup = () => {
   const [searchParams] = useSearchParams();
   const contractId = searchParams.get("contractId");
 
-  if (contractId) {
-    localStorage.setItem("contractId", contractId);
-  }
-
   console.log(contractId, "contractId");
 
   const navigate = useNavigate();
