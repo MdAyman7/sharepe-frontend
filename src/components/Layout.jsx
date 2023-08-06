@@ -12,6 +12,9 @@ const Layout = ({ children }) => {
       const { success, msg } = await checkSession();
       console.log(success, msg, "data");
       if (!success) {
+        if (pathname === "/signup") {
+          navigate("/signup");
+        }
         if (pathname !== "/login") {
           navigate("/login");
         }
