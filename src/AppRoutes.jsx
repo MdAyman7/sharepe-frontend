@@ -19,6 +19,14 @@ function App() {
       ),
     },
     {
+      path: "/home",
+      element: (
+        <Layout>
+          <Home />
+        </Layout>
+      ),
+    },
+    {
       path: "/create",
       element: (
         <Layout>

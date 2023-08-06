@@ -1,61 +1,52 @@
-export const postFetch = async (
-  url,
-  params,
-  headersRequired = true,
-  type = "json"
-) => {
-  const headers = new Headers({
-    "Content-Type":
-      type === "json"
-        ? "application/json"
-        : "application/x-www-form-urlencoded",
-    "Cache-Control": "no-store",
-    Pragma: "no-store",
-  });
+export const getFetch = (url) =>
+  fetch(url, {
+    method: "GET",
+    credentials: "include",
+  })
+    .then(
+      (response) => {
+        if (!response.ok) {
+          if (response.status === 401) {
+            window.location.hash = "#/login";
+          }
+          console.log("Uh-oh!");
 
-  const resp = (
-    await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(params),
-      headers: headersRequired ? headers : undefined,
-      credentials: "include",
-      cache: "no-store",
-    }).then
-  )((response) => {
-    if (!response.ok) {
-      console.log("Help me, API Broken", url, params);
-      return { status: 0, msg: "Something went wrong." };
-    }
-    return response.json();
-  }).catch((error) => {
-    console.log("API failed:", url, error);
+          return response.json();
+        }
+        return response.json();
+      },
+      (error) => {
+        console.log("Nahiiiii", error);
+        return { success: 0, msg: "Something went wrong." };
+      }
+    )
+    .then((json) => json);
 
-    return { status: 0, msg: "Something went wrong." };
-  });
-  return resp;
-};
+export const postFetch = (url, params) =>
+  fetch(url, {
+    method: "POST",
+    body: JSON.stringify(params),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    mode: "cors",
+  })
+    .then(
+      async (response) => {
+        if (!response.ok) {
+          if (response.status === 401) {
+            window.location.hash = "#/login";
+          }
+          console.log("Uh-oh!");
 
-export const getFetch = async (url, params = "") => {
-  const resp = (
-    await fetch(`${url}${params ? `?${params}` : ""}`, {
-      method: "GET",
-      credentials: "include",
-      cache: "no-store",
-      headers: new Headers({
-        "Cache-Control": "no-store",
-        Pragma: "no-store",
-      }),
-    }).then
-  )((response) => {
-    if (!response.ok) {
-      console.log("Help me, API Broken:", url);
-      return { status: 0, msg: "Something went wrong." };
-    }
-    return response.json();
-  }).catch((error) => {
-    console.log("API failed:", url, error);
-
-    return { status: 0, msg: "Something went wrong." };
-  });
-  return resp;
-};
+          return response.json();
+        }
+        return response.json();
+      },
+      (error) => {
+        console.log("Nahiiiii!", error);
+        return { success: 0, msg: "Something went wrong." };
+      }
+    )
+    .then((json) => json);
