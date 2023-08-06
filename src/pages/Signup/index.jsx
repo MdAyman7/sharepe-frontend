@@ -1,12 +1,18 @@
 import { Button, Form, Input, message } from "antd";
 import Header from "../../components/Header";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import FeatureImg from "../../assets/images/feature.png";
 import { signupUser } from "../../utils/apis";
 
 const Signup = () => {
-  const searchParams = new URLSearchParams(window.location.search);
-  console.log(searchParams.get("contractId"), "contractId");
+  const [searchParams] = useSearchParams();
+  const contractId = searchParams.get("contractId");
+
+  if (contractId) {
+    localStorage.setItem("contractId", contractId);
+  }
+
+  console.log(contractId, "contractId");
 
   const navigate = useNavigate();
   const onFinish = async (values) => {
