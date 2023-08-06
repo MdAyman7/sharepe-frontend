@@ -1,3 +1,11 @@
 h1 {
   margin: 0 !important;
 }
+
+.max-w-448 {
+  max-width: 448px;
+}
+
+.max-w-480 {
+  max-width: 480px;
+}

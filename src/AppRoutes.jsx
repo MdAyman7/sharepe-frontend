@@ -81,7 +81,7 @@ function App() {
       }}
     >
       <div className="bg-gray-800 min-h-screen">
-        <div className="container max-w-screen-[480px] mx-auto min-h-screen bg-gray-100">
+        <div className="container max-w-480 mx-auto min-h-screen bg-gray-100">
           <RouterProvider router={router} />
         </div>
       </div>

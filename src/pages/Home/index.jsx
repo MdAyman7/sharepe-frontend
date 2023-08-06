@@ -48,7 +48,7 @@ const Home = () => {
         />
       </div>
 
-      <div className="fixed bottom-4 left-4 right-4  container max-w-[448px] mx-auto">
+      <div className="fixed bottom-4 left-4 right-4  container max-w-448 mx-auto">
         <Button
           type="primary"
           size="large"
