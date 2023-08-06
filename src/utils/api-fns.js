@@ -6,7 +6,7 @@ export const getFetch = (url) =>
     .then(
       (response) => {
         if (!response.ok) {
-          if (response.status === 401) {
+          if (response.status === 440) {
             window.location.hash = "#/login";
           }
           console.log("Uh-oh!");
@@ -35,7 +35,7 @@ export const postFetch = (url, params) =>
     .then(
       async (response) => {
         if (!response.ok) {
-          if (response.status === 401) {
+          if (response.status === 440) {
             window.location.hash = "#/login";
           }
           console.log("Uh-oh!");
