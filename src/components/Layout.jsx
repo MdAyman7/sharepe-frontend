@@ -14,8 +14,7 @@ const Layout = ({ children }) => {
       if (!success) {
         if (pathname === "/signup") {
           navigate("/signup");
-        }
-        if (pathname !== "/login") {
+        } else if (pathname !== "/login") {
           navigate("/login");
         }
       } else {
