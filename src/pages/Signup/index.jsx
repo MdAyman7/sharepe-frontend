@@ -8,14 +8,16 @@ const Signup = () => {
   const [searchParams] = useSearchParams();
   const contractId = searchParams.get("contractId");
 
-  console.log(contractId, "contractId");
-
   const navigate = useNavigate();
   const onFinish = async (values) => {
     const { success } = await signupUser(values);
     if (success) {
       message.success("Account created successfully");
-      navigate("/login");
+      if (contractId) {
+        navigate(`/contract/${contractId}`);
+      } else {
+        navigate("/login");
+      }
     } else {
       message.error("Either email or username already exists");
     }
