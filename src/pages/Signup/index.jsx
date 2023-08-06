@@ -5,6 +5,9 @@ import FeatureImg from "../../assets/images/feature.png";
 import { signupUser } from "../../utils/apis";
 
 const Signup = () => {
+  const searchParams = new URLSearchParams(window.location.search);
+  console.log(searchParams.get("contractId"), "contractId");
+
   const navigate = useNavigate();
   const onFinish = async (values) => {
     const { success } = await signupUser(values);

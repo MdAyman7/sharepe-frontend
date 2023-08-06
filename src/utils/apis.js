@@ -10,3 +10,10 @@ export const createNewContract = (body) =>
   postFetch(`${baseUrl}/chitfunds/create`, body);
 
 export const checkSession = () => getFetch(`${baseUrl}/users/check-session`);
+
+export const getAllChitfunds = () => getFetch(`${baseUrl}/chitfunds/all`);
+export const getIndividualChitfunds = (contractId) =>
+  getFetch(`${baseUrl}/chitfunds/${contractId}`);
+
+export const investChitFund = (body) =>
+  postFetch(`${baseUrl}/chitfunds/invest`, body);

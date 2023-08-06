@@ -51,7 +51,7 @@ const CreateContract = () => {
         console.log("OK");
         const { success, data } = await createNewContract(values);
         if (success && data?.[0]?.contract_id) {
-          navigate(`/contract/${data?.[0]?.contract_id}/success`);
+          navigate(`/contract/${data?.[0]?.contract_id}/deposit`);
           message.success("Contract created successfully");
         } else {
           message.error("Error in creating contract");
@@ -247,7 +247,7 @@ const CreateContract = () => {
               Use SharePe Wallet
             </div>
             <div className="p-4 mt-4 bg-white border-2 border-solid rounded-lg text-neutral-500 border-neutral-200">
-              Keep it in my bank account
+              Keep it in my bank account (Coming Soon)
             </div>
           </div>
         </div>

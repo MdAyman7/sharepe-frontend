@@ -3,10 +3,12 @@ import { ConfigProvider } from "antd";
 import "./App.css";
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import CreateContract from "./pages/Contract";
+import CreateContract from "./pages/CreateContract";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Layout from "./components/Layout";
+import ContractDeposit from "./pages/ContractDeposit";
+import ContractDetails from "./pages/ContractDetails";
 
 function App() {
   const router = createHashRouter([
@@ -48,6 +50,22 @@ function App() {
       element: (
         <Layout>
           <Signup />
+        </Layout>
+      ),
+    },
+    {
+      path: "/contract/:id",
+      element: (
+        <Layout>
+          <ContractDetails />
+        </Layout>
+      ),
+    },
+    {
+      path: "/contract/:id/deposit",
+      element: (
+        <Layout>
+          <ContractDeposit />
         </Layout>
       ),
     },

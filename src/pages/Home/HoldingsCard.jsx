@@ -1,34 +1,42 @@
-import { Button, Tag } from "antd";
+import { Tag } from "antd";
 import chitImage from "../../../src/assets/images/chit.png";
 import Countdown from "react-countdown";
+import { useState } from "react";
+import InvestModal from "./InvestModal";
 
-const HoldingsCard = ({ data }) => {
-  const {
-    title,
-    totalAmount,
-    yourInvestment,
-    durationDays,
-    remainingPoolAmount,
-  } = data;
+const HoldingsCard = ({ data, callback }) => {
+  const { title, amount, min_interest_rate, duration, pool_end_time } = data;
+
+  const percentage = 10;
 
   const blockData = [
     {
       name: "Your Investment",
-      value: yourInvestment,
+      value: `₹${
+        data?.memberships?.[0]?.contribution_amount?.toLocaleString("en-IN") ||
+        0
+      }`,
     },
     {
       name: "Total amount",
-      value: totalAmount,
+      value: `₹${amount.toLocaleString("en-IN")}`,
     },
     {
       name: "Duration",
-      value: `${durationDays} Days`,
+      value: `${duration} Days`,
     },
     {
       name: "Min. Interest rate",
-      value: yourInvestment,
+      value: `${min_interest_rate}%`,
     },
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="bg-white shadow-md rounded-md ">
       <div className="p-4">
@@ -55,7 +63,7 @@ const HoldingsCard = ({ data }) => {
             <div key={ele.name}>
               <div className="text-sm text-gray-400">{ele.name}</div>
               <div className="text-xl font-semibold">
-                ₹{ele.value.toLocaleString("en-IN")}
+                {ele.value.toLocaleString("en-IN")}
               </div>
             </div>
           ))}
@@ -68,7 +76,7 @@ const HoldingsCard = ({ data }) => {
               Time left for bidding
             </div>
             <div className="text-right text-lg text-black font-medium">
-              <Countdown date={Date.now() + 100000} />
+              <Countdown date={new Date(pool_end_time)} />
             </div>
           </div>
 
@@ -77,14 +85,30 @@ const HoldingsCard = ({ data }) => {
               Remaining pool size
             </div>
             <div className="text-right text-lg text-black font-medium">
-              ₹{remainingPoolAmount.toLocaleString("en-IN")}
+              ₹{amount.toLocaleString("en-IN")}
             </div>
+          </div>
+          <div className="h-2 w-full bg-gray-200 rounded-lg mb-4 relative">
+            <div
+              className={`absolute left-0 h-2 top-0 bottom-0 bg-primary w-[${percentage}%] rounded-lg`}
+            ></div>
           </div>
         </div>
       </div>
-      <div className="bg-primary/10 py-4 w-full text-center font-medium text-primary text-lg cursor-pointer">
+      <div
+        className="bg-primary/10 py-4 w-full text-center font-medium text-primary text-lg cursor-pointer"
+        onClick={() => {
+          showModal();
+        }}
+      >
         Invest Now
       </div>
+      <InvestModal
+        contract_id={data.contract_id}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        callback={callback}
+      />
     </div>
   );
 };
